@@ -10,6 +10,9 @@ public class Main {
             case 1:
                 Lab_1.lab_1();
                 break;
+            case 2:
+                Lab_2.lab_2();
+                break;
             default:
                 System.out.println("Неправильний номер варіанту(");
 
