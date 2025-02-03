@@ -1,4 +1,5 @@
 
+import javax.swing.*;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -21,6 +22,20 @@ public class Main {
                 break;
             case 5:
                 Lab_5.lab_5();
+                break;
+            case 6:
+                Lab_6.lab_6();
+                break;
+            case 7:
+                new Lab_7.FirstForm();
+                break;
+            case 8:
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        Lab_8.lab_8();
+                    }
+                });
                 break;
             default:
                 System.out.println("Неправильний номер варіанту(");
