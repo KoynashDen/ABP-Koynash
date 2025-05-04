@@ -1,3 +1,6 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Lab_2 {
     private double a, b;
 
@@ -16,10 +19,38 @@ public class Lab_2 {
         return new double[]{x, a * x + b};
     }
 
-    public static void   lab_2() {
-        Lab_2 line1 = new Lab_2(2, 3);
-        Lab_2 line2 = new Lab_2(-1, 5);
-        double x = 1, y = 5;
+    private static double getDoubleInput(Scanner scanner, String prompt) {
+        double num;
+        while (true) {
+            try {
+                System.out.print(prompt);
+                num = scanner.nextDouble();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Помилка! Введіть лише число.");
+                scanner.next();
+            }
+        }
+        return num;
+    }
+
+    public static void lab_2() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введіть параметри для першої прямої (y = ax + b):");
+        double a1 = getDoubleInput(scanner, "a1: ");
+        double b1 = getDoubleInput(scanner, "b1: ");
+        Lab_2 line1 = new Lab_2(a1, b1);
+
+        System.out.println("Введіть параметри для другої прямої (y = ax + b):");
+        double a2 = getDoubleInput(scanner, "a2: ");
+        double b2 = getDoubleInput(scanner, "b2: ");
+        Lab_2 line2 = new Lab_2(a2, b2);
+
+        System.out.println("Введіть координати точки для перевірки її належності першій і другій прямим:");
+        double x = getDoubleInput(scanner, "x: ");
+        double y = getDoubleInput(scanner, "y: ");
+
         System.out.println("Точка (" + x + ", " + y + ") " + (line1.IfOnLine(x, y) ? "належить" : "не належить") + " прямій 1");
         System.out.println("Точка (" + x + ", " + y + ") " + (line2.IfOnLine(x, y) ? "належить" : "не належить") + " прямій 2");
 
@@ -30,5 +61,6 @@ public class Lab_2 {
             System.out.println("Прямі паралельні");
         }
 
+        scanner.close();
     }
 }
